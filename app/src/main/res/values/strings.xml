@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Gerenciador de filmes</string>
     <string name="movie_list">Lista de filmes</string>
+    <string name="name">Nome:</string>
+    <string name="releaseYears">Ano de lançamento:</string>
+    <string name="production">Produtora</string>
+    <string name="minutes">Tempo de duração:</string>
+    <string name="genero">Gênero:</string>
+    <string name="watched">Assistido</string>
+    <string name="stars">Nota:</string>
+    <string name="urlImg">Foto:</string>
 </resources>

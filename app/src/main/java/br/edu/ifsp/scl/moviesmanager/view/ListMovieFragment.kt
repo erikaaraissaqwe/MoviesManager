@@ -1,6 +1,5 @@
 package br.edu.ifsp.scl.moviesmanager.view
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,8 +31,15 @@ class ListMovieFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        fragmentListMovieBinding = FragmentListMovieBinding.inflate(inflater, container, false)
+
         (activity as? AppCompatActivity)?.supportActionBar?.subtitle = getString(R.string.movie_list)
-        return inflater.inflate(R.layout.fragment_list_movie, container, false)
+
+        fragmentListMovieBinding.buttonAdd.setOnClickListener {
+            navController.navigate(R.id.action_listMovieFragment_to_registerMovieFragment)
+        }
+
+        return fragmentListMovieBinding.root
     }
 
 

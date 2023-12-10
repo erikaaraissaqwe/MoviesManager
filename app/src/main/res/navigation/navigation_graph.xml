@@ -8,6 +8,16 @@
         android:id="@+id/listMovieFragment"
         android:name="br.edu.ifsp.scl.moviesmanager.view.ListMovieFragment"
         android:label="Filmes"
+        tools:layout="@layout/fragment_list_movie">
+        <action
+            android:id="@+id/action_listMovieFragment_to_registerMovieFragment"
+            app:destination="@id/registerMovieFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerMovieFragment"
+        android:name="br.edu.ifsp.scl.moviesmanager.view.RegisterMovieFragment"
+        android:label="Novo filme "
         tools:layout="@layout/fragment_list_movie" >
     </fragment>
 </navigation>
