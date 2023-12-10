@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Gerenciador de filmes</string>
+    <string name="movie_list">Lista de filmes</string>
 </resources>
