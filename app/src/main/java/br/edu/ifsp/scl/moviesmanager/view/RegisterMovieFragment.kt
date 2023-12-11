@@ -5,33 +5,81 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import br.edu.ifsp.scl.moviesmanager.R
-import br.edu.ifsp.scl.moviesmanager.databinding.FragmentListMovieBinding
+import br.edu.ifsp.scl.moviesmanager.controller.MovieViewModel
+import androidx.navigation.fragment.findNavController
 import br.edu.ifsp.scl.moviesmanager.databinding.FragmentRegisterMovieBinding
+import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
+import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.WATCHED_FALSE
+import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.WATCHED_TRUE
+import com.google.android.material.snackbar.Snackbar
 
 class RegisterMovieFragment : Fragment() {
 
 
     private lateinit var fragmentRegisterMovieBinding: FragmentRegisterMovieBinding
 
+    private lateinit var viewModel: MovieViewModel
+
     companion object {
         fun newInstance() = RegisterMovieFragment()
     }
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        fragmentRegisterMovieBinding = FragmentRegisterMovieBinding.inflate(inflater, container, false)
+
         (activity as? AppCompatActivity)?.supportActionBar?.subtitle = getString(R.string.movie_register)
 
-        return inflater.inflate(R.layout.fragment_register_movie, container, false)
+        return fragmentRegisterMovieBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var commonLayout = fragmentRegisterMovieBinding.commonLayout
+
+        fragmentRegisterMovieBinding.saveBt.setOnClickListener {
+            if (validate()){
+                var name = commonLayout.editTextName.text.toString()
+                var releaseYears = commonLayout.editTextReleaseYears.text.toString()
+                var production = commonLayout.editTextProduction.text.toString()
+                var minutes = commonLayout.editTextMinutes.text.toString().toLong()
+                var watched = if (commonLayout.watchedCb.isChecked) WATCHED_TRUE else WATCHED_FALSE
+                var stars = commonLayout.editTextStars.text.toString().toInt()
+                var genre = (commonLayout.editSpinnerGenre.selectedView as TextView).text.toString()
+                var url = commonLayout.editTexturlImg.text.toString()
+
+                val movie = Movie(name, releaseYears, production, minutes, watched, stars, genre, url)
+
+                viewModel.createMovie(movie)
+                Snackbar.make(fragmentRegisterMovieBinding.root, "Filme inserido", Snackbar.LENGTH_SHORT).show()
+                findNavController().popBackStack()
+            }
+            else
+                Toast.makeText(commonLayout.editTextName.context, "Complete todos os campos", Toast.LENGTH_SHORT).show()
+
+        }
+    }
+
+    fun validate(): Boolean {
+        fragmentRegisterMovieBinding.commonLayout.editTextName.text.isEmpty()
+            return false
+        return true
     }
 
 }

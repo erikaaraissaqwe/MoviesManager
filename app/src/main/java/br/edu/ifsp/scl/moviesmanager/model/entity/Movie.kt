@@ -1,11 +1,9 @@
 package br.edu.ifsp.scl.moviesmanager.model.entity
 
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
+
 @Entity
 class Movie(
     @PrimaryKey
@@ -18,7 +16,7 @@ class Movie(
     var genre: String,
     var url: String,
 
-) : Parcelable {
+) {
     companion object {
         const val WATCHED_TRUE = 1
         const val WATCHED_FALSE = 0

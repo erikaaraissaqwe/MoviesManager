@@ -8,4 +8,12 @@
     <include layout="@layout/common_layout"
         android:id="@+id/common_layout"/>
 
+    <Button
+        android:id="@+id/saveBt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondary"
+        android:background="@color/primary"
+        android:text="@string/save" />
+
 </LinearLayout>

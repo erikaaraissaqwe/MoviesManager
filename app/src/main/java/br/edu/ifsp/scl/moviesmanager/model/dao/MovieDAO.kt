@@ -9,7 +9,7 @@ import androidx.room.Update
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
 
 @Dao
-interface MovieDao {
+interface MovieDAO {
 
     companion object {
         const val MOVIE_TABLE = "movie"
@@ -27,5 +27,5 @@ interface MovieDao {
     fun getAllMovies(): LiveData<List<Movie>>
 
     @Query("SELECT * FROM $MOVIE_TABLE WHERE name=:name")
-    fun getMovieById(name: String): LiveData<Movie>
+    fun getMovieByName(name: String): LiveData<Movie>
 }

@@ -6,18 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import br.edu.ifsp.scl.moviesmanager.R
-import br.edu.ifsp.scl.moviesmanager.controller.ListMovieViewModel
+import br.edu.ifsp.scl.moviesmanager.controller.MovieViewModel
 import br.edu.ifsp.scl.moviesmanager.databinding.FragmentListMovieBinding
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
+import br.edu.ifsp.scl.moviesmanager.view.adapter.MovieAdapter
 
-class ListMovieFragment : Fragment() {
+class ListMovieFragment : Fragment(){
 
     private lateinit var fragmentListMovieBinding: FragmentListMovieBinding
 
-    private lateinit var viewModel: ListMovieViewModel
+    lateinit var viewModel: MovieViewModel
+
+    private val movieAdapter: MovieAdapter by lazy{
+        MovieAdapter()
+    }
 
     private val movieList: MutableList<Movie> = mutableListOf();
 
@@ -47,5 +54,21 @@ class ListMovieFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
+
+        /*viewModel.allMovies.observe(requireActivity()){ movies ->
+            movieList.clear()
+            movies.forEachIndexed{
+                    index, movie ->
+                movieList.add(movie)
+                movieAdapter.notifyItemChanged(index)
+            }
+        }
+
+        viewModel.getMovies()*/
+    }
 
 }

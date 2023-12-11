@@ -17,4 +17,9 @@
     <string name="digite_do_nome_do_filme">Digite do nome do filme</string>
     <string name="preenche_com_a_produtora_do_filme">Digite a produtora do filme</string>
     <string name="movie_register">Cadastro de filme</string>
+    <string name="watchedTile">Assistido</string>
+    <string name="startsTile">Estrelas</string>
+    <string name="generoTile">Gênero</string>
+    <string name="imagem_de_capa_do_filme">Imagem de capa do filme</string>
+    <string name="save">Salvar</string>
 </resources>
