@@ -8,5 +8,13 @@
     <string name="genero">Gênero:</string>
     <string name="watched">Assistido</string>
     <string name="stars">Nota:</string>
-    <string name="urlImg">Foto:</string>
+    <string name="urlImg">Capa:</string>
+    <string name="imagem_da_capa_do_filme">Imagem da capa do filme</string>
+    <string name="digite_um_n_mero_de_0_a_10">Digite a nota de 0 a 10</string>
+    <string name="adicione_a_url_de_uma_foto_ou_da_capa_do_filme">Adicione a capa do filme</string>
+    <string name="digite_o_tempo_em_minutos">Digite o tempo em minutos</string>
+    <string name="preencha_o_ano_com_4_caracteres_exemplo_2000">Preencha o ano, tipo: 2000</string>
+    <string name="digite_do_nome_do_filme">Digite do nome do filme</string>
+    <string name="preenche_com_a_produtora_do_filme">Digite a produtora do filme</string>
+    <string name="movie_register">Cadastro de filme</string>
 </resources>

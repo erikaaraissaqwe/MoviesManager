@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
@@ -14,14 +15,14 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_margin="20dp"
-            />
+            android:contentDescription="@string/imagem_da_capa_do_filme" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/name"
-            android:textColor="@color/secondary"
+            android:textColor="@color/primary"
             android:textSize="24sp" />
 
 
@@ -29,8 +30,13 @@
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/secondary"
-            android:textSize="24sp" />
+            android:hint="@string/digite_do_nome_do_filme"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            android:textSize="24sp"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,14 +44,20 @@
             android:text="@string/releaseYears"
             android:textSize="24sp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/secondary"/>
+            android:textColor="@color/primary"/>
 
         <EditText
             android:id="@+id/editTextReleaseYears"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/preencha_o_ano_com_4_caracteres_exemplo_2000"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
             android:textSize="24sp"
-            android:textColor="@color/secondary"/>
+            android:importantForAutofill="no"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,16 +65,20 @@
             android:text="@string/production"
             android:textSize="24sp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/secondary"/>
+            android:textColor="@color/primary"/>
 
         <EditText
             android:id="@+id/editTextProduction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:hint="@string/preenche_com_a_produtora_do_filme"
+            android:importantForAutofill="no"
+            android:inputType="text"
             android:maxLines="3"
-            android:textColor="@color/secondary"
-            />
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            android:textSize="20sp"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,30 +86,43 @@
             android:text="@string/minutes"
             android:textSize="24sp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/secondary"/>
+            android:textColor="@color/primary"/>
 
         <EditText
             android:id="@+id/editTextMinutes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite o tempo em minutos"
-            android:textSize="20sp"
+            android:hint="@string/digite_o_tempo_em_minutos"
+            android:importantForAutofill="no"
+            android:inputType="number"
             android:maxLines="3"
-            android:textColor="@color/secondary"
-            />
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            android:textSize="20sp"
+            tools:ignore="VisualLintTextFieldSize" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/watched"
-            android:textSize="24sp"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/white"/>
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/watchedCb"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/watchedCb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/primary"
+                android:layout_gravity="center_vertical"
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/watched"
+                android:textSize="24sp"
+                android:layout_gravity="center"
+                android:textColor="@color/primary"/>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -101,19 +130,22 @@
             android:text="@string/stars"
             android:textSize="24sp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/secondary"/>
+            android:textColor="@color/primary"/>
 
         <EditText
             android:id="@+id/editTextStars"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="0123456789"
-            android:hint="Digite um número de 0 a 10"
+            android:hint="@string/digite_um_n_mero_de_0_a_10"
             android:inputType="number"
             android:maxLength="2"
             android:minHeight="32dp"
-            android:textColor="@color/secondary"
-            android:textSize="20sp" />
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            android:textSize="20sp"
+            android:importantForAutofill="no"
+            tools:ignore="VisualLintTextFieldSize" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,7 +153,7 @@
             android:text="@string/genero"
             android:textSize="24sp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/primary"/>
 
         <Spinner
             android:id="@+id/editSpinnerGenre"
@@ -137,7 +169,7 @@
             android:text="@string/urlImg"
             android:textSize="24sp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/secondary"/>
+            android:textColor="@color/primary"/>
 
         <EditText
             android:id="@+id/editTexturlImg"
@@ -145,9 +177,11 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:inputType="textUri"
-            android:hint="Adicione a url de uma foto ou da capa do filme"
-            android:textColor="@color/secondary"
-            />
+            android:hint="@string/adicione_a_url_de_uma_foto_ou_da_capa_do_filme"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/grey"
+            android:importantForAutofill="no"
+            tools:ignore="VisualLintTextFieldSize" />
 
     </LinearLayout>
 </ScrollView>
