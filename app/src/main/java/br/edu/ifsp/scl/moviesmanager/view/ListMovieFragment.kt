@@ -22,7 +22,6 @@ import br.edu.ifsp.scl.moviesmanager.databinding.FragmentListMovieBinding
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
 import br.edu.ifsp.scl.moviesmanager.view.adapter.MovieAdapter
 import com.google.android.material.snackbar.Snackbar
-import java.lang.Thread.sleep
 
 class ListMovieFragment : Fragment(){
 
@@ -46,7 +45,7 @@ class ListMovieFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentListMovieBinding = FragmentListMovieBinding.inflate(inflater, container, false)
 
 
@@ -81,8 +80,8 @@ class ListMovieFragment : Fragment(){
 
     private fun setListenerDetailsMovieView() {
         val movieListener = object : MovieAdapter.MovieListener {
-            override fun onItemClick(position: Int) {
-                var movie = movieList[position]
+            override fun onItemClick(pos: Int) {
+                var movie = movieList[pos]
 
                 val bundle = Bundle()
                 bundle.putString("nameMovie", movie.name)
@@ -105,7 +104,7 @@ class ListMovieFragment : Fragment(){
                 movieAdapter.notifyItemChanged(index)
             }
             movies.let {
-                movieAdapter.notifyDataSetChanged()
+                this.movieAdapter.notifyDataSetChanged()
             }
         }
 

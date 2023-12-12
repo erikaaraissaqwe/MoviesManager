@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -26,6 +27,7 @@ import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.WATCHED_FALSE
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.WATCHED_TRUE
 import br.edu.ifsp.scl.moviesmanager.view.adapter.MovieAdapter
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import java.lang.Thread.sleep
 
@@ -46,6 +48,7 @@ class MovieDetailsFragment : Fragment() {
     lateinit var watchedEditText: CheckBox
     lateinit var starsEditText: EditText
     lateinit var genreEditText: Spinner
+    lateinit var urlImageView: ImageView
     lateinit var urlEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,6 +92,8 @@ class MovieDetailsFragment : Fragment() {
             watchedEditText.isChecked = isWatchedChecked()
             starsEditText.setText(movie.stars.toString())
             genreEditText.setSelection(getGenrePosition(movie.genre))
+            var context = urlImageView.context
+            Glide.with(context).load(movie.url).into(urlImageView)
             urlEditText.setText(movie.url)
         }
 
@@ -111,6 +116,7 @@ class MovieDetailsFragment : Fragment() {
         this.starsEditText = fragmentMovieDetailsBinding.commonLayout.editTextStars
         this.genreEditText = fragmentMovieDetailsBinding.commonLayout.editSpinnerGenre
         this.urlEditText = fragmentMovieDetailsBinding.commonLayout.editTexturlImg
+        this.urlImageView = fragmentMovieDetailsBinding.commonLayout.urlImg
     }
 
     private fun movieDetailsView(disabled: Boolean) {

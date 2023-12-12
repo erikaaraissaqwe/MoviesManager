@@ -25,11 +25,6 @@ class RegisterMovieFragment : Fragment() {
 
     private lateinit var viewModel: MovieViewModel
 
-    companion object {
-        fun newInstance() = RegisterMovieFragment()
-    }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -40,9 +35,10 @@ class RegisterMovieFragment : Fragment() {
     ): View? {
         fragmentRegisterMovieBinding = FragmentRegisterMovieBinding.inflate(inflater, container, false)
 
-        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = getString(R.string.movie_register)
-
-        fragmentRegisterMovieBinding.commonLayout.urlImg.visibility = View.GONE
+        fragmentRegisterMovieBinding.apply {
+            (activity as? AppCompatActivity)?.supportActionBar?.subtitle = getString(R.string.movie_register)
+            fragmentRegisterMovieBinding.commonLayout.urlImg.visibility = View.GONE
+        }
 
         return fragmentRegisterMovieBinding.root
     }

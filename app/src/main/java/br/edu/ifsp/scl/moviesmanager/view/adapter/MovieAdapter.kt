@@ -20,7 +20,7 @@ class MovieAdapter(private var movieList: MutableList<Movie>) : RecyclerView.Ada
         var watchedViewHolder = view.watchedTv
         var starsViewHolder = view.startsTv
         var genreViewHolder = view.generoTv
-        var urlViewHolder = view.imgUrlIm
+        var imgUrlViewHolder = view.imgUrlIm
 
         init {
             view.root.setOnClickListener {
@@ -45,9 +45,9 @@ class MovieAdapter(private var movieList: MutableList<Movie>) : RecyclerView.Ada
         holder.watchedViewHolder.text = movieList[position].watched.toString()
         holder.starsViewHolder.text = movieList[position].stars.toString()
         holder.genreViewHolder.text = movieList[position].genre
-        var context = holder.urlViewHolder.context
+        var context = holder.imgUrlViewHolder.context
         var urlImg = movieList[position].url
-        Glide.with(context).load(urlImg).into(holder.urlViewHolder);
+        Glide.with(context).load(urlImg).into(holder.imgUrlViewHolder);
     }
 
     override fun getFilter(): Filter {
