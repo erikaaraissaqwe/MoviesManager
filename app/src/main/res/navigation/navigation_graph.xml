@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_listMovieFragment_to_registerMovieFragment"
             app:destination="@id/registerMovieFragment" />
+        <action
+            android:id="@+id/action_listMovieFragment_to_detailsFragment"
+            app:destination="@id/detailsMovieFragment" />
     </fragment>
 
     <fragment
@@ -19,5 +22,12 @@
         android:name="br.edu.ifsp.scl.moviesmanager.view.RegisterMovieFragment"
         android:label="Novo filme "
         tools:layout="@layout/fragment_list_movie" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsMovieFragment"
+        android:name="br.edu.ifsp.scl.moviesmanager.view.MovieDetailsFragment"
+        android:label="Detalhes do filme "
+        tools:layout="@layout/fragment_movie_details" >
     </fragment>
 </navigation>

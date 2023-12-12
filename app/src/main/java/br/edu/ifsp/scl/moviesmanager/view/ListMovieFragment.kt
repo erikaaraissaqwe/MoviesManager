@@ -65,10 +65,33 @@ class ListMovieFragment : Fragment(){
 
         viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
 
-        viewModel.allMovies.observe(requireActivity()){ movies ->
+        updateMovieList()
+
+        setListenerDetailsMovieView()
+    }
+
+    private fun setListenerDetailsMovieView() {
+        val movieListener = object : MovieAdapter.MovieListener {
+            override fun onItemClick(position: Int) {
+                var movie = movieList[position]
+
+                val bundle = Bundle()
+                bundle.putString("nameMovie", movie.name)
+
+                findNavController().navigate(
+                    R.id.action_listMovieFragment_to_detailsFragment,
+                    bundle
+                )
+            }
+
+        }
+        movieAdapter.setClickListener(movieListener)
+    }
+
+    private fun updateMovieList() {
+        viewModel.allMovies.observe(requireActivity()) { movies ->
             movieList.clear()
-            movies.forEachIndexed{
-                    index, movie ->
+            movies.forEachIndexed { index, movie ->
                 movieList.add(movie)
                 movieAdapter.notifyItemChanged(index)
             }

@@ -42,6 +42,8 @@ class RegisterMovieFragment : Fragment() {
 
         (activity as? AppCompatActivity)?.supportActionBar?.subtitle = getString(R.string.movie_register)
 
+        fragmentRegisterMovieBinding.commonLayout.urlImg.visibility = View.GONE
+
         return fragmentRegisterMovieBinding.root
     }
 
