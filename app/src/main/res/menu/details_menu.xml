@@ -5,11 +5,11 @@
         android:id="@+id/action_updateMovie"
         android:title="@string/atualizar"
         android:icon="@android:drawable/ic_menu_save"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/action_deleteMovie"
         android:title="@string/excluir"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:icon="@android:drawable/ic_menu_delete"/>
 </menu>

@@ -25,7 +25,7 @@
     <string name="ordenarName">Ordenar por Nome</string>
     <string name="ordenarStarts">Ordenar por nota</string>
     <string name="pesquisar">Pesquisar</string>
-    <string name="atualizar">Atualizar</string>
-    <string name="excluir">Deletar</string>
+    <string name="atualizar">Atualizar Filme</string>
+    <string name="excluir">Deletar Filme</string>
     <string name="details_movie_view">Informações do filme</string>
 </resources>

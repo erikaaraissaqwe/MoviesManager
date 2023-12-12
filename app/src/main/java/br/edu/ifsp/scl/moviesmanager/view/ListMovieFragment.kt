@@ -15,6 +15,7 @@ import br.edu.ifsp.scl.moviesmanager.controller.MovieViewModel
 import br.edu.ifsp.scl.moviesmanager.databinding.FragmentListMovieBinding
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
 import br.edu.ifsp.scl.moviesmanager.view.adapter.MovieAdapter
+import java.lang.Thread.sleep
 
 class ListMovieFragment : Fragment(){
 
@@ -41,15 +42,14 @@ class ListMovieFragment : Fragment(){
     ): View? {
         fragmentListMovieBinding = FragmentListMovieBinding.inflate(inflater, container, false)
 
-        (activity as? AppCompatActivity)?.supportActionBar?.subtitle = getString(R.string.movie_list)
-
-        fragmentListMovieBinding.buttonAdd.setOnClickListener {
-            navController.navigate(R.id.action_listMovieFragment_to_registerMovieFragment)
-        }
 
         fragmentListMovieBinding.apply {
             recyclerview.layoutManager = LinearLayoutManager(context)
             recyclerview.adapter = movieAdapter
+            (activity as? AppCompatActivity)?.supportActionBar?.subtitle = getString(R.string.movie_list)
+            buttonAdd.setOnClickListener {
+                navController.navigate(R.id.action_listMovieFragment_to_registerMovieFragment)
+            }
         }
 
         return fragmentListMovieBinding.root
@@ -95,9 +95,11 @@ class ListMovieFragment : Fragment(){
                 movieList.add(movie)
                 movieAdapter.notifyItemChanged(index)
             }
+            movies.let {
+                movieAdapter.notifyDataSetChanged()
+            }
         }
 
         viewModel.getMovies()
     }
-
 }
