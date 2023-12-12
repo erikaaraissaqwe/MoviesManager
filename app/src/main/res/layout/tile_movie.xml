@@ -52,22 +52,22 @@
                         android:textSize="22sp" />
 
                     <TextView
-                        android:id="@+id/startsTv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="@string/startsTile"
-                        android:textColor="@color/primary"
-                        android:textSize="22sp" />
-
-                    <TextView
                         android:id="@+id/generoTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/generoTile"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/primary"
-                        android:textSize="22sp" />
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/startsTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/startsTile"
+                        android:textColor="@color/primary"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

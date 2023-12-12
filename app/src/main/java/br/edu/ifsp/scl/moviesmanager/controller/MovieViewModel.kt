@@ -2,7 +2,6 @@ package br.edu.ifsp.scl.moviesmanager.controller
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import br.edu.ifsp.scl.moviesmanager.model.database.MovieDatabase
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
@@ -13,7 +12,7 @@ import kotlinx.coroutines.launch
 class MovieViewModel(application: Application): AndroidViewModel(application) {
     private val dao = MovieDatabase.getDatabase(application).movieDAO()
     val allMovies = MutableLiveData<MutableList<Movie>>()
-    lateinit var movie: Movie;
+    lateinit var movie: Movie
 
     fun createMovie(movie: Movie){
         CoroutineScope(Dispatchers.IO).launch {

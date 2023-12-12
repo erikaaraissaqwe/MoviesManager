@@ -24,6 +24,7 @@ import br.edu.ifsp.scl.moviesmanager.R
 import br.edu.ifsp.scl.moviesmanager.controller.MovieViewModel
 import br.edu.ifsp.scl.moviesmanager.databinding.FragmentMovieDetailsBinding
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
+import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.INVALID_STARS
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.WATCHED_FALSE
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.WATCHED_TRUE
 import br.edu.ifsp.scl.moviesmanager.view.adapter.MovieAdapter
@@ -37,19 +38,17 @@ class MovieDetailsFragment : Fragment() {
 
     private lateinit var viewModel: MovieViewModel
 
-    private lateinit var movieAdapter: MovieAdapter
-
     lateinit var movie: Movie
 
-    lateinit var nameEditText: EditText
-    lateinit var releaseYearsEditText: EditText
-    lateinit var productionEditText: EditText
-    lateinit var minutesEditText: EditText
-    lateinit var watchedEditText: CheckBox
-    lateinit var starsEditText: EditText
-    lateinit var genreEditText: Spinner
-    lateinit var urlImageView: ImageView
-    lateinit var urlEditText: EditText
+    private lateinit var nameEditText: EditText
+    private lateinit var releaseYearsEditText: EditText
+    private lateinit var productionEditText: EditText
+    private lateinit var minutesEditText: EditText
+    private lateinit var watchedEditText: CheckBox
+    private lateinit var starsEditText: EditText
+    private lateinit var genreEditText: Spinner
+    private lateinit var urlImageView: ImageView
+    private lateinit var urlEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +59,7 @@ class MovieDetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentMovieDetailsBinding = FragmentMovieDetailsBinding.inflate(inflater, container, false)
 
         fragmentMovieDetailsBinding.apply {
@@ -90,9 +89,9 @@ class MovieDetailsFragment : Fragment() {
             productionEditText.setText(movie.production)
             minutesEditText.setText(movie.minutes.toString())
             watchedEditText.isChecked = isWatchedChecked()
-            starsEditText.setText(movie.stars.toString())
+            starsEditText.setText(if (movie.stars != INVALID_STARS) movie.stars.toString() else "")
             genreEditText.setSelection(getGenrePosition(movie.genre))
-            var context = urlImageView.context
+            val context = urlImageView.context
             Glide.with(context).load(movie.url).into(urlImageView)
             urlEditText.setText(movie.url)
         }
@@ -100,12 +99,6 @@ class MovieDetailsFragment : Fragment() {
         inicializeMenu()
     }
 
-
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
 
     private fun layoutFieldInitializer() {
         this.nameEditText = fragmentMovieDetailsBinding.commonLayout.editTextName
@@ -139,8 +132,14 @@ class MovieDetailsFragment : Fragment() {
         return movie.watched == WATCHED_TRUE
     }
 
-    fun validate(): Boolean {
-        if (fragmentMovieDetailsBinding.commonLayout.editTextReleaseYears.text.isEmpty())
+    private fun validate(): Boolean {
+        if (
+            fragmentMovieDetailsBinding.commonLayout.editTextReleaseYears.text.isEmpty() ||
+            fragmentMovieDetailsBinding.commonLayout.editTextMinutes.text.isEmpty() ||
+            fragmentMovieDetailsBinding.commonLayout.editTextProduction.text.isEmpty() ||
+            fragmentMovieDetailsBinding.commonLayout.editTexturlImg.text.isEmpty() ||
+            (fragmentMovieDetailsBinding.commonLayout.editTextStars.text.isNotEmpty() && fragmentMovieDetailsBinding.commonLayout.editTextStars.text.toString().toInt() > 10)
+        )
             return false
         return true
     }
@@ -151,7 +150,7 @@ class MovieDetailsFragment : Fragment() {
             movie.production = productionEditText.text.toString()
             movie.minutes = minutesEditText.text.toString().toLong()
             movie.watched = if (watchedEditText.isChecked) WATCHED_TRUE else WATCHED_FALSE
-            movie.stars = starsEditText.text.toString().toInt()
+            movie.stars = if (starsEditText.text.toString() != "") starsEditText.text.toString().toInt() else INVALID_STARS
             movie.genre = (genreEditText.selectedView as TextView).text.toString()
             movie.url = urlEditText.text.toString()
 

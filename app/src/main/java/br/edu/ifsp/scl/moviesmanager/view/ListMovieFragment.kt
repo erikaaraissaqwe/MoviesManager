@@ -29,7 +29,7 @@ class ListMovieFragment : Fragment(){
 
     lateinit var viewModel: MovieViewModel
 
-    private val movieList: MutableList<Movie> = mutableListOf();
+    private val movieList: MutableList<Movie> = mutableListOf()
 
 
     private val movieAdapter: MovieAdapter by lazy{
@@ -62,10 +62,6 @@ class ListMovieFragment : Fragment(){
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -81,7 +77,7 @@ class ListMovieFragment : Fragment(){
     private fun setListenerDetailsMovieView() {
         val movieListener = object : MovieAdapter.MovieListener {
             override fun onItemClick(pos: Int) {
-                var movie = movieList[pos]
+                val movie = movieList[pos]
 
                 val bundle = Bundle()
                 bundle.putString("nameMovie", movie.name)

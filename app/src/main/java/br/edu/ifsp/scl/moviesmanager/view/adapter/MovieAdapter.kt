@@ -2,14 +2,13 @@ package br.edu.ifsp.scl.moviesmanager.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import br.edu.ifsp.scl.moviesmanager.databinding.TileMovieBinding
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
+import br.edu.ifsp.scl.moviesmanager.model.entity.Movie.Companion.WATCHED_TRUE
 import com.bumptech.glide.Glide
 
-class MovieAdapter(private var movieList: MutableList<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(), Filterable {
+class MovieAdapter(private var movieList: MutableList<Movie>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     var movieListener: MovieListener?=null
 
@@ -42,16 +41,11 @@ class MovieAdapter(private var movieList: MutableList<Movie>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
 
         holder.nameViewHolder.text = movieList[position].name
-        holder.watchedViewHolder.text = movieList[position].watched.toString()
-        holder.starsViewHolder.text = movieList[position].stars.toString()
+        holder.watchedViewHolder.text = setWatched(movieList[position].watched)
+        holder.starsViewHolder.text = setStars(movieList[position].stars)
         holder.genreViewHolder.text = movieList[position].genre
-        var context = holder.imgUrlViewHolder.context
-        var urlImg = movieList[position].url
-        Glide.with(context).load(urlImg).into(holder.imgUrlViewHolder);
-    }
-
-    override fun getFilter(): Filter {
-        TODO("Not yet implemented")
+        val context = holder.imgUrlViewHolder.context
+        Glide.with(context).load(movieList[position].url).into(holder.imgUrlViewHolder)
     }
 
     fun setClickListener(listener: MovieListener)
@@ -63,4 +57,21 @@ class MovieAdapter(private var movieList: MutableList<Movie>) : RecyclerView.Ada
     {
         fun onItemClick(pos: Int)
     }
+    private fun setStars(stars: Int): String
+    {
+        var star = ""
+        for (x in 0 until stars){
+            star += "⭐"
+        }
+        return star
+    }
+
+    private fun setWatched(watched: Int): String
+    {
+        if (watched == WATCHED_TRUE)
+            return "Já vi!"
+
+        return "Ainda quero ver"
+    }
+
 }
