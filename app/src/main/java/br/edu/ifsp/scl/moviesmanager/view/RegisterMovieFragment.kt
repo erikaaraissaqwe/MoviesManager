@@ -32,9 +32,6 @@ class RegisterMovieFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
-
     }
 
     override fun onCreateView(
@@ -51,9 +48,11 @@ class RegisterMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
+
         var commonLayout = fragmentRegisterMovieBinding.commonLayout
 
-        fragmentRegisterMovieBinding.saveBt.setOnClickListener {
+        fragmentRegisterMovieBinding.commonLayout.saveBt.setOnClickListener {
             if (validate()){
                 var name = commonLayout.editTextName.text.toString()
                 var releaseYears = commonLayout.editTextReleaseYears.text.toString()
@@ -77,7 +76,7 @@ class RegisterMovieFragment : Fragment() {
     }
 
     fun validate(): Boolean {
-        fragmentRegisterMovieBinding.commonLayout.editTextName.text.isEmpty()
+        if (fragmentRegisterMovieBinding.commonLayout.editTextName.text.isEmpty())
             return false
         return true
     }

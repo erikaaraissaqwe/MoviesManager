@@ -183,5 +183,14 @@
             android:importantForAutofill="no"
             tools:ignore="VisualLintTextFieldSize" />
 
+        <Button
+            android:id="@+id/saveBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/secondary"
+            android:text="@string/save"
+            android:textColor="@color/primary" />
+
     </LinearLayout>
 </ScrollView>
