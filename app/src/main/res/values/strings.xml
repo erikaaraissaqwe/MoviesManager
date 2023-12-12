@@ -23,7 +23,7 @@
     <string name="imagem_de_capa_do_filme">Imagem de capa do filme</string>
     <string name="save">Salvar</string>
     <string name="ordenarName">Ordenar por Nome</string>
-    <string name="ordenarStarts">Ordenar por nota</string>
+    <string name="ordenarStarts">Ordenar por Nota</string>
     <string name="pesquisar">Pesquisar</string>
     <string name="atualizar">Atualizar Filme</string>
     <string name="excluir">Deletar Filme</string>

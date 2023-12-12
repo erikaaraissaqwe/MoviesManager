@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class MovieViewModel(application: Application): AndroidViewModel(application) {
     private val dao = MovieDatabase.getDatabase(application).movieDAO()
-    val allMovies = MutableLiveData<List<Movie>>()
+    val allMovies = MutableLiveData<MutableList<Movie>>()
     lateinit var movie: Movie;
 
     fun createMovie(movie: Movie){
@@ -43,6 +43,20 @@ class MovieViewModel(application: Application): AndroidViewModel(application) {
     fun editMovie(movie: Movie){
         CoroutineScope(Dispatchers.IO).launch {
             dao.update(movie)
+        }
+    }
+
+    fun getMoviesOrderByName(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val movies = dao.getAllMoviesOrderByName()
+            allMovies.postValue(movies)
+        }
+    }
+
+    fun getMoviesOrderByStarts(){
+        CoroutineScope(Dispatchers.IO).launch {
+            val movies = dao.getAllMoviesOrderByStarts()
+            allMovies.postValue(movies)
         }
     }
 

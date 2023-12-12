@@ -12,9 +12,5 @@
         android:title="@string/ordenarStarts"
         app:showAsAction="never"
         android:icon="@android:drawable/ic_menu_delete"/>
-    <item
-        android:id="@+id/action_pesquisarMovie"
-        android:title="@string/pesquisar"
-        app:showAsAction="never"
-        android:icon="@android:drawable/ic_menu_delete"/>
+
 </menu>

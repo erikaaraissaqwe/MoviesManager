@@ -24,8 +24,14 @@ interface MovieDAO {
     fun delete(movie: Movie)
 
     @Query("SELECT * FROM $MOVIE_TABLE")
-    fun getAllMovies(): List<Movie>
+    fun getAllMovies(): MutableList<Movie>
 
     @Query("SELECT * FROM $MOVIE_TABLE WHERE name=:name")
     fun getMovieByName(name: String): Movie
+
+    @Query("SELECT * FROM $MOVIE_TABLE ORDER BY name")
+    fun getAllMoviesOrderByName(): MutableList<Movie>
+
+    @Query("SELECT * FROM $MOVIE_TABLE ORDER BY stars DESC")
+    fun getAllMoviesOrderByStarts(): MutableList<Movie>
 }
