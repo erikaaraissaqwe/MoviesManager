@@ -11,8 +11,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,10 +27,12 @@ class ListMovieFragment : Fragment(){
 
     private lateinit var fragmentListMovieBinding: FragmentListMovieBinding
 
-    lateinit var viewModel: MovieViewModel
 
     private val movieList: MutableList<Movie> = mutableListOf()
 
+    private val viewModel: MovieViewModel by viewModels {
+        MovieViewModel.MovieViewModelFactory
+    }
 
     private val movieAdapter: MovieAdapter by lazy{
         MovieAdapter(movieList)
@@ -39,8 +41,6 @@ class ListMovieFragment : Fragment(){
     private val navController: NavController by lazy {
         findNavController()
     }
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,13 +65,11 @@ class ListMovieFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
-
         updateMovieList()
 
         setListenerDetailsMovieView()
 
-        inicializeMenu()
+        initializeMenu()
     }
 
     private fun setListenerDetailsMovieView() {
@@ -97,14 +95,13 @@ class ListMovieFragment : Fragment(){
             movieList.clear()
             movies.forEachIndexed { index, movie ->
                 movieList.add(movie)
-                movieAdapter.notifyItemChanged(index)
             }
             movies.let {
                 this.movieAdapter.notifyDataSetChanged()
             }
         }
 
-        when (type){
+        when (type) {
             "orderByName" -> {
                 viewModel.getMoviesOrderByName()
             }
@@ -113,10 +110,9 @@ class ListMovieFragment : Fragment(){
             }
             else -> viewModel.getMovies()
         }
-
     }
 
-    private fun inicializeMenu() {
+    private fun initializeMenu() {
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

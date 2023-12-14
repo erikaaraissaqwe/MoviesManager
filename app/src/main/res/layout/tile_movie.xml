@@ -40,7 +40,7 @@
                         android:text="@string/name"
                         android:layout_marginTop="4dp"
                         android:textColor="@color/primary"
-                        android:textSize="30sp" />
+                        android:textSize="26sp" />
 
                     <TextView
                         android:id="@+id/watchedTv"
@@ -49,7 +49,7 @@
                         android:layout_marginTop="4dp"
                         android:text="@string/watchedTile"
                         android:textColor="@color/primary"
-                        android:textSize="22sp" />
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/generoTv"
@@ -67,7 +67,7 @@
                         android:layout_marginTop="4dp"
                         android:text="@string/startsTile"
                         android:textColor="@color/primary"
-                        android:textSize="16sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

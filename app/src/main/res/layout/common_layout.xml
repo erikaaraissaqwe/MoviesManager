@@ -188,9 +188,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:background="@color/secondary"
+            android:backgroundTint="@color/primary"
             android:text="@string/save"
-            android:textColor="@color/primary" />
+            android:textColor="@color/secondary" />
 
     </LinearLayout>
 </ScrollView>

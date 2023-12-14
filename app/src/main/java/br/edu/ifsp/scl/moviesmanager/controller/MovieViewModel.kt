@@ -3,6 +3,10 @@ package br.edu.ifsp.scl.moviesmanager.controller
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.viewmodel.CreationExtras
 import br.edu.ifsp.scl.moviesmanager.model.database.MovieDatabase
 import br.edu.ifsp.scl.moviesmanager.model.entity.Movie
 import kotlinx.coroutines.CoroutineScope
@@ -56,6 +60,19 @@ class MovieViewModel(application: Application): AndroidViewModel(application) {
         CoroutineScope(Dispatchers.IO).launch {
             val movies = dao.getAllMoviesOrderByStarts()
             allMovies.postValue(movies)
+        }
+    }
+
+    companion object {
+        val MovieViewModelFactory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(
+                modelClass: Class<T>,
+                extras: CreationExtras
+            ): T {
+                val application = checkNotNull(extras[APPLICATION_KEY])
+
+                return  MovieViewModel(application) as T
+            }
         }
     }
 
