@@ -1,10 +1,10 @@
 # Gerenciador de filmes - Aplicativo de Gerenciamento de Filmes
 
-Olá! Seja bem-vindo ao Gerenciador de filmes, o seu assistente pessoal para gerenciar sua coleção de filmes de maneira fácil e eficiente.
+Olá! Seja bem-vindo ao Gerenciador de filmes, o seu assistente pessoal para gerenciar sua coleção de filmes de maneira fácil.
 
 ## Visão Geral
 
-O **Gerenciador de filmes** é uma aplicação dedicada ao gerenciamento de filmes, permitindo que você cadastre, edite, exclua e visualize informações detalhadas sobre seus filmes favoritos. Além disso, oferece a funcionalidade de ordenar sua coleção tanto por ordem alfabética do nome do filme quanto por maior nota.
+O **Gerenciador de filmes** é uma aplicação dedicada ao gerenciamento de filmes, permitindo que você cadastre, edite, exclua e visualize informações detalhadas sobre seus filmes. Além disso, oferece a funcionalidade de ordenar sua coleção tanto por ordem alfabética do nome do filme quanto por maior nota.
 
 ## Funcionalidades Principais
 
@@ -22,7 +22,5 @@ O **Gerenciador de filmes** é uma aplicação dedicada ao gerenciamento de film
 
 Para uma visão mais abrangente das funcionalidades do **Gerenciador de filmes**, confira nosso [vídeo de apresentação](https://github.com/erikaaraissaqwe/MoviesManager/blob/master/Gerenciador%20de%20filmes%20-%20apresenta%C3%A7%C3%A3o.mp4).
 
-
-Esperamos que aproveite o uso do aplicativo! Se tiver alguma dúvida ou sugestão, não hesite em entrar em contato.
 
 Divirta-se gerenciando sua coleção de filmes com o **Gerenciador de filmes**! 🎬🍿
